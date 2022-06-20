@@ -1,19 +1,49 @@
 :root {
-    --card: #b7eef5;
-    --main: #B7F5DD;
-    --tiles: #AA3159;
-    --text: #1E3B56;
+    --card: #B7EEF5;
+    --main: #DDB7F5;
+    --tiles: #F5BEB7;
 }
 
 body {
     background-color: var(--main);
-    color: var(--text)
+    display: flex;
+    flex-direction: column;
 }
 
-h1 {
-    color: var(--tiles);
+header {
+    justify-self: center;
+    min-width: 100%;
+    text-align: center;
+    padding: 1.2em;
+    margin: .3em;
+    background-color: var(--card);
 }
+
+/* h1 {
+
+} */
 
 button {
     background-color: var(--card);
+    padding: .1em;
+    border-radius: 12%;
+    border-color: var(--card);
+}
+
+/* main {
+    
+} */
+
+#search {
+    max-width: 25%;
+}
+
+#search-input {
+    padding-bottom: .2em;
+    border-bottom: solid black 2px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2em;
 }
