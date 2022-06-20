@@ -1,0 +1,19 @@
+:root {
+    --main: #b7eef5;
+    --card: #B7F5DD;
+    --tiles: #AA3159;
+    --text: #1E3B56;
+}
+
+body {
+    background-color: var(--main);
+    color: var(--text)
+}
+
+h1 {
+    color: var(--tiles);
+}
+
+button {
+    background-color: var(--card);
+}
