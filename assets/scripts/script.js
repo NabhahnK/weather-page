@@ -6,21 +6,26 @@ let submitBtn = document.getElementById("submitBtn");
 
 function getLL(city) {
     let apiCall = openWeatherMapAPI + city + "&appid=" + apiKey;
-    console.log(apiCall);
+    // console.log(apiCall);
     fetch(apiCall)
         .then(response => response.json())
         .then(function(data) {
-            console.log(data);
+            // console.log(data);
             localStorage.setItem("lat", data[0].lat);
-            console.log(localStorage.getItem("lat"));
+            // console.log(localStorage.getItem("lat"));
             localStorage.setItem("lon", data[0].lon);
-            console.log(localStorage.getItem("lon"));
+            // console.log(localStorage.getItem("lon"));
         })
 }
 
 function getWeatherData() {
     let apiCall = openWeatherAPI + "lat=" + localStorage.getItem("lat") + "&lon=" + localStorage.getItem("lon") + "&appid=" + apiKey;
     console.log(apiCall);
+    fetch(apiCall)
+        .then(response => response.json())
+        .then(function(data) {
+            console.log(data);
+        })
 }
 
 function ini() {
