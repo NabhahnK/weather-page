@@ -12,16 +12,24 @@ function getLL(city) {
         .then(function(data) {
             console.log(data);
             localStorage.setItem("lat", data[0].lat);
+            console.log(localStorage.getItem("lat"));
+            localStorage.setItem("lon", data[0].lon);
+            console.log(localStorage.getItem("lon"));
         })
 }
 
-function getWeather() {
+function getWeatherData() {
+    let apiCall = openWeatherAPI + "lat=" + localStorage.getItem("lat") + "&lon=" + localStorage.getItem("lon") + "&appid=" + apiKey;
+    console.log(apiCall);
+}
+
+function ini() {
     if (!userInput.value) {
         alert("Please, Enter a City name.");
         return
     }
-    console.log("test");
     getLL(userInput.value);
+    getWeatherData();
 }
 
-submitBtn.addEventListener("click", getWeather);
+submitBtn.addEventListener("click", ini);
