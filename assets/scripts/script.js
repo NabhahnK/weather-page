@@ -8,8 +8,15 @@ let history = document.getElementById("history");
 function createBtns() {
     if (localStorage.length > 0) {
         //Items are stored in local storage
+        for(let i = 0; i < localStorage.length; i++) {
+            if(localStorage.getItem(localStorage.key(i)) != "lat"||"lon") {
+                console.log( localStorage.getItem( localStorage.key( i ) ) );
+            }
+            console.log( localStorage.getItem( localStorage.key( i ) ) );
+        }
     } else {
         //Local storage is empty
+        return;
     }
 }
 
@@ -47,4 +54,5 @@ function ini() {
     getWeatherData();
 }
 
+createBtns()
 submitBtn.addEventListener("click", ini);
