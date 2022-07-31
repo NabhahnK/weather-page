@@ -5,6 +5,7 @@ let userInput = document.querySelector("#cityname");
 let submitBtn = document.getElementById("submitBtn");
 let history = document.getElementById("history");
 
+// Creates the Btns for previous searched citys
 function createBtns() {
     if (localStorage.length > 0) {
         //Items are stored in local storage
@@ -20,6 +21,7 @@ function createBtns() {
     }
 }
 
+// Gets the lan and log using the city name
 function getLL(city) {
     let apiCall = openWeatherMapAPI + city + "&appid=" + apiKey;
     // console.log(apiCall);
@@ -35,6 +37,7 @@ function getLL(city) {
         })
 }
 
+// Gets the weather using the lan and log
 function getWeatherData() {
     let apiCall = openWeatherAPI + "lat=" + localStorage.getItem("lat") + "&lon=" + localStorage.getItem("lon") + "&appid=" + apiKey;
     console.log(apiCall);
@@ -45,6 +48,7 @@ function getWeatherData() {
         })
 }
 
+// Runs when search is clicked
 function ini() {
     if (!userInput.value) {
         alert("Please, Enter a City name.");
