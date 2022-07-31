@@ -1,19 +1,29 @@
+// Sets needed variables
 const openWeatherAPI = "https://api.openweathermap.org/data/2.5/onecall?";
 const openWeatherMapAPI = "http://api.openweathermap.org/geo/1.0/direct?q=";
 const apiKey = "752a7c69c2f675bacc2d0b896d1432e5";
 let userInput = document.querySelector("#cityname");
 let submitBtn = document.getElementById("submitBtn");
-let history = document.getElementById("history");
+const history = document.getElementById("history");
 
 // Creates the Btns for previous searched citys
 function createBtns() {
     if (localStorage.length > 0) {
         //Items are stored in local storage
-        for(let i = 0; i < localStorage.length; i++) {
-            if(localStorage.getItem(localStorage.key(i)) != "lat"||"lon") {
-                console.log( localStorage.getItem( localStorage.key( i ) ) );
+        for (let i = 0; i < localStorage.length; i++) {
+            // Runs if the key is not lan or log
+            let name = localStorage.key(i);
+
+            if (name != "lat" || "lon") {
+                console.log(localStorage.getItem(localStorage.key(i)));
+
+                const btn = document.createElement("button");
+                
+                btn.innerHTML = localStorage.key(i);
+                
+                document.getElementById("history").appendChild(btn);
             }
-            console.log( localStorage.getItem( localStorage.key( i ) ) );
+            console.log(localStorage.getItem(localStorage.key(i)));
         }
     } else {
         //Local storage is empty
