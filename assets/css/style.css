@@ -65,4 +65,20 @@ input {
 #weather-section {
     flex-grow: 2;
     min-width: 80%;
+    flex-wrap: wrap;
+}
+
+#city-weather {
+    min-width: 100%;
+    border: 2.5px black solid;
+}
+
+#five-day {
+    flex-direction: row;
+}
+
+#date-1 {
+    border: 2.5 black solid;
+    /* min-width: 20%;
+    max-width: 20%; */
 }

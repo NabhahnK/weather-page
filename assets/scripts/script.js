@@ -5,7 +5,6 @@ const apiKey = "752a7c69c2f675bacc2d0b896d1432e5";
 let userInput = document.querySelector("#cityname");
 let submitBtn = document.getElementById("submitBtn");
 const history = document.getElementById("history");
-let cities = [];
 
 // Creates the Btns for previous searched citys
 function createBtns() {
@@ -33,6 +32,10 @@ function createBtns() {
     }
 }
 
+function fillHTML() {
+    // call in html variables to fill on the top
+}
+
 // Gets the lan and log using the city name
 function getLL(city) {
     let apiCall = openWeatherMapAPI + city + "&appid=" + apiKey;
@@ -58,6 +61,7 @@ function getWeatherData() {
         .then(response => response.json())
         .then(function (data) {
             console.log(data);
+            localStorage.setItem("cityData", data);
         })
 }
 
@@ -70,6 +74,7 @@ function ini(event) {
     }
     getLL(userInput.value);
     getWeatherData();
+    fillHTML();
 }
 
 createBtns()
