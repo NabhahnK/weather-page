@@ -33,12 +33,16 @@ button {
     margin-top: .2em;
 }
 
-/* main {
-    
-} */
+main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
 
 #search {
+    min-height: 100%;
     max-width: 25%;
+    flex-grow: 1;
 }
 
 #search-input {
@@ -56,4 +60,9 @@ input {
     min-width: 90%;
     text-align: center;
     margin-left: 5%;
+}
+
+#weather-section {
+    flex-grow: 2;
+    min-width: 80%;
 }
