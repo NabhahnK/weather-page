@@ -4,18 +4,23 @@ const openWeatherMapAPI = "http://api.openweathermap.org/geo/1.0/direct?q=";
 const apiKey = "752a7c69c2f675bacc2d0b896d1432e5";
 let userInput = document.querySelector("#cityname");
 let submitBtn = document.getElementById("submitBtn");
+const cityAndDate = document.getElementById("city-date");
+const temp = document.getElementById("curr-temp");
+const humm = document.getElementById("curr-hum");
+const uv = document.getElementById("curr-uv");
+const wind = document.getElementById("curr-wind");
 const history = document.getElementById("history");
 
 // Creates the Btns for previous searched citys
 function createBtns() {
-
+    history.innerHTML = "";
     if (localStorage.length > 0) {
         //Items are stored in local storage
         for (let i = 0; i < localStorage.length; i++) {
             // Runs if the key is not lan or log
             let name = localStorage.key(i);
 
-            if (name != "lat" && name != "lon") {
+            if (name != "lat" && name != "lon" && name != "cityData") {
                 console.log(localStorage.getItem(localStorage.key(i)));
 
                 const btn = document.createElement("button");
@@ -34,6 +39,10 @@ function createBtns() {
 
 function fillHTML() {
     // call in html variables to fill on the top
+
+    // Fill in day w
+
+    // Loop to make and fill cards
 }
 
 // Gets the lan and log using the city name
