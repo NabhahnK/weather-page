@@ -20,7 +20,7 @@ function createBtns() {
             // Runs if the key is not lan or log
             let name = localStorage.key(i);
 
-            if (name != "lat" && name != "lon" && name != "cityData") {
+            if (name != "lat" && name != "lon" && name != "cityData" && name != "currentCall") {
                 console.log(localStorage.getItem(localStorage.key(i)));
 
                 const btn = document.createElement("button");
@@ -41,7 +41,11 @@ async function fillHTML(data) {
     // return;
     // call in html variables to fill on the top
     // Fill in day w
-    // cityAndDate.innerHTM;
+    let date = new Date(data.current.dt*1000);
+    console.log(
+        (date.getMonth()+1) + "/" + date.getDate() + "/" + 
+        date.getFullYear());
+    cityAndDate.textContent = localStorage.getItem("currentCall") + " " + (date.getMonth()+1) + "/" + date.getDate() + "/" + date.getFullYear();
     let dataV2 = data
     temp.innerHTML = await "Temp: " + dataV2.current.temp;
     await console.log(dataV2.current.wind_speed);
@@ -49,6 +53,17 @@ async function fillHTML(data) {
     uv.textContent = await "UV: " + dataV2.current.uvi;
     wind.textContent = "Wind: " + dataV2.current.wind_speed;
     // Loop to make and fill cards
+    for(let i; i < 5; i++) {
+        let card = document.createElement("div");
+        let date = document.createElement("h3");
+        let img = document.createElement("img");
+        let cardTemp = document.createElement("p");
+        let cardWind = document.createElement("p");
+        let cardHum = document.createElement("p");
+
+
+    }
+
 }
 
 // Gets the lan and log using the city name
@@ -56,6 +71,7 @@ function getLL(city) {
     let apiCall = openWeatherMapAPI + city + "&appid=" + apiKey;
     // console.log(apiCall);
     localStorage.setItem(city, city);
+    localStorage.setItem("currentCall", city);
     createBtns()
     fetch(apiCall)
         .then(response => response.json())
@@ -70,7 +86,7 @@ function getLL(city) {
 
 // Gets the weather using the lan and log
 function getWeatherData() {
-    let apiCall = openWeatherAPI + "lat=" + localStorage.getItem("lat") + "&lon=" + localStorage.getItem("lon") + "&appid=" + apiKey;
+    let apiCall = openWeatherAPI + "lat=" + localStorage.getItem("lat") + "&lon=" + localStorage.getItem("lon") + "&appid=" + apiKey + "&units=imperial";
     console.log(apiCall);
     fetch(apiCall)
         .then(response => response.json())
