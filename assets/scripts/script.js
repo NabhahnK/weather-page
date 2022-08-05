@@ -9,6 +9,7 @@ const temp = document.querySelector("#curr-temp");
 const humm = document.querySelector("#curr-hum");
 const uv = document.querySelector("#curr-uv");
 const wind = document.querySelector("#curr-wind");
+const fiveDay = document.querySelector("#five-day");
 const history = document.getElementById("history");
 
 // Creates the Btns for previous searched citys
@@ -21,7 +22,7 @@ function createBtns() {
             let name = localStorage.key(i);
 
             if (name != "lat" && name != "lon" && name != "cityData" && name != "currentCall") {
-                console.log(localStorage.getItem(localStorage.key(i)));
+                // console.log(localStorage.getItem(localStorage.key(i)));
 
                 const btn = document.createElement("button");
 
@@ -37,23 +38,9 @@ function createBtns() {
     }
 }
 
-async function fillHTML(data) {
-    // return;
-    // call in html variables to fill on the top
-    // Fill in day w
-    let date = new Date(data.current.dt*1000);
-    console.log(
-        (date.getMonth()+1) + "/" + date.getDate() + "/" + 
-        date.getFullYear());
-    cityAndDate.textContent = localStorage.getItem("currentCall") + " " + (date.getMonth()+1) + "/" + date.getDate() + "/" + date.getFullYear();
-    let dataV2 = data
-    temp.innerHTML = await "Temp: " + dataV2.current.temp;
-    await console.log(dataV2.current.wind_speed);
-    humm.textContent = await "Humidity: " + dataV2.current.humidity;
-    uv.textContent = await "UV: " + dataV2.current.uvi;
-    wind.textContent = "Wind: " + dataV2.current.wind_speed;
+function makeCard(data) {
     // Loop to make and fill cards
-    for(let i; i < 5; i++) {
+    for(let i = 0; i < 5; i++) {
         let card = document.createElement("div");
         let date = document.createElement("h3");
         let img = document.createElement("img");
@@ -61,9 +48,34 @@ async function fillHTML(data) {
         let cardWind = document.createElement("p");
         let cardHum = document.createElement("p");
 
+        let index = (i + 1);
+        let cardDate = new Date(data.daily[index].dt*1000);
 
+        date.textContent = (cardDate.getMonth()+1) + "/" + cardDate.getDate() + "/" + cardDate.getFullYear();
+        img.src = "http://openweathermap.org/img/wn/" + data.daily[index].weather[0].icon + "@2x.png";
+        cardTemp.textContent = "Temp: " + data.daily[index].temp.day;
+        cardWind.textContent = "Wind: " + data.daily[index].wind_speed;
+        cardHum.textContent = "Humidity: " + data.daily[index].humidity;
+
+        card.appendChild(date);
+        card.appendChild(img);
+        card.appendChild(cardTemp);
+        card.appendChild(cardWind);
+        card.appendChild(cardHum);
+        fiveDay.appendChild(card);
     }
+}
 
+async function fillHTML(data) {
+    // Fill in day w
+    let date = new Date(data.current.dt*1000);
+    cityAndDate.textContent = localStorage.getItem("currentCall") + " " + (date.getMonth()+1) + "/" + date.getDate() + "/" + date.getFullYear();
+    let dataV2 = data
+    temp.innerHTML = await "Temp: " + dataV2.current.temp;
+    humm.textContent = await "Humidity: " + dataV2.current.humidity;
+    uv.textContent = await "UV: " + dataV2.current.uvi;
+    wind.textContent = await "Wind: " + dataV2.current.wind_speed;
+    makeCard(dataV2);
 }
 
 // Gets the lan and log using the city name
