@@ -120,5 +120,14 @@ function ini(event) {
     getWeatherData();
 }
 
+function iniHistory(event) {
+    let target = event.target;
+
+    if(target.tagName != "BUTTON") {return}
+    getLL(target.textContent);
+    getWeatherData();
+}
+
 createBtns()
 submitBtn.addEventListener("click", ini);
+history.addEventListener("click", iniHistory);
