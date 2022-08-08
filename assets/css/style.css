@@ -83,3 +83,10 @@ input {
 #curr-uv {
     max-width: fit-content;
 }
+
+@media only screen and (max-width: 600px) {
+    #five-day {
+        flex-direction: column;
+        align-items: center;
+    }
+  }
