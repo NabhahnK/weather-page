@@ -79,3 +79,7 @@ input {
 #five-day > div {
     width: 18%;
 }
+
+#curr-uv {
+    max-width: fit-content;
+}
