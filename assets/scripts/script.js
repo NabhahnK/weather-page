@@ -98,7 +98,7 @@ function getLL(city) {
 
 // Gets the weather using the lan and log
 function getWeatherData() {
-    let apiCall = openWeatherAPI + "&lat=" + localStorage.getItem("lat") + "&lon=" + localStorage.getItem("lon") + "&appid=" + apiKey + "&units=imperial";
+    let apiCall = openWeatherAPI + "lat=" + localStorage.getItem("lat") + "&lon=" + localStorage.getItem("lon") + "&appid=" + apiKey + "&units=imperial";
     console.log(apiCall);
     fetch(apiCall)
         .then(response => response.json())
