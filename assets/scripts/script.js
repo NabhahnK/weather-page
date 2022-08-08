@@ -84,7 +84,7 @@ function getLL(city) {
     // console.log(apiCall);
     localStorage.setItem(city, city);
     localStorage.setItem("currentCall", city);
-    createBtns()
+    createBtns();
     fetch(apiCall)
         .then(response => response.json())
         .then(function (data) {
