@@ -52,7 +52,7 @@ function makeCard(data) {
         let cardDate = new Date(data.daily[index].dt*1000);
 
         date.textContent = (cardDate.getMonth()+1) + "/" + cardDate.getDate() + "/" + cardDate.getFullYear();
-        img.src = "http://openweathermap.org/img/wn/" + data.daily[index].weather[0].icon + "@2x.png";
+        img.src = "https://openweathermap.org/img/wn/" + data.daily[index].weather[0].icon + "@2x.png";
         cardTemp.textContent = "Temp: " + data.daily[index].temp.day;
         cardWind.textContent = "Wind: " + data.daily[index].wind_speed;
         cardHum.textContent = "Humidity: " + data.daily[index].humidity;
@@ -98,7 +98,7 @@ function getLL(city) {
 
 // Gets the weather using the lan and log
 function getWeatherData() {
-    let apiCall = openWeatherAPI + "lat=" + localStorage.getItem("lat") + "&lon=" + localStorage.getItem("lon") + "&appid=" + apiKey + "&units=imperial";
+    let apiCall = openWeatherAPI + "&lat=" + localStorage.getItem("lat") + "&lon=" + localStorage.getItem("lon") + "&appid=" + apiKey + "&units=imperial";
     console.log(apiCall);
     fetch(apiCall)
         .then(response => response.json())
