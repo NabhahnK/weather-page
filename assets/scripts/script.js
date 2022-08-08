@@ -68,13 +68,25 @@ function makeCard(data) {
 }
 
 async function fillHTML(data) {
-    // Fill in day w
+    // Fill in day weather
     let date = new Date(data.current.dt*1000);
     cityAndDate.textContent = localStorage.getItem("currentCall") + " " + (date.getMonth()+1) + "/" + date.getDate() + "/" + date.getFullYear();
     let dataV2 = data
     temp.innerHTML = await "Temp: " + dataV2.current.temp;
     humm.textContent = await "Humidity: " + dataV2.current.humidity;
     uv.textContent = await "UV: " + dataV2.current.uvi;
+
+    // Colors the uv to indicate severity
+    if(dataV2.current.uvi >= 8) {
+        uv.style.backgroundColor = "#ff0000";
+    } else if(dataV2.current.uvi >= 6) {
+        uv.style.backgroundColor = "#FFA500";
+    } else if(dataV2.current.uvi >= 3) {
+        uv.style.backgroundColor = "#FFFF00";
+    } else {
+        uv.style.backgroundColor = "#00FF00";
+    }
+
     wind.textContent = await "Wind: " + dataV2.current.wind_speed;
     makeCard(dataV2);
 }
