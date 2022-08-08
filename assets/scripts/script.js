@@ -1,6 +1,6 @@
 // Sets needed variables
 const openWeatherAPI = "https://api.openweathermap.org/data/2.5/onecall?";
-const openWeatherMapAPI = "http://api.openweathermap.org/geo/1.0/direct?q=";
+const openWeatherMapAPI = "https://api.openweathermap.org/geo/1.0/direct?q=";
 const apiKey = "752a7c69c2f675bacc2d0b896d1432e5";
 let userInput = document.querySelector("#cityname");
 let submitBtn = document.getElementById("submitBtn");
