@@ -40,6 +40,7 @@ function createBtns() {
 
 function makeCard(data) {
     // Loop to make and fill cards
+    fiveDay.innerHTML = "";
     for(let i = 0; i < 5; i++) {
         let card = document.createElement("div");
         let date = document.createElement("h3");
