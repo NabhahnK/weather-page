@@ -4,7 +4,7 @@
 
 ## My Task
 
-To use the [OpenWeather One Call API](https://openweathermap.org/api/one-call-api) Third-party API build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS. To retrieve weather data for cities. I had to read the documentation for setup and usage instructions. I used `localStorage` to store any persistent data.
+To use the [OpenWeather One Call API](https://openweathermap.org/api/one-call-api) Third-party API build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS. To retrieve weather data for cities. I had to read the documentation for setup and usage instructions. I used `localStorage` to store any persistent data. I deployed it in a [GitHub Page](https://nabhahnk.github.io/weather-page/).
 
 ## User Story
 
